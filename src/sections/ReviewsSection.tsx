@@ -1,5 +1,5 @@
 import React from "react";
-import { Star } from "lucide-react";
+import { Star, MapPin, CalendarDays } from "lucide-react";
 
 import { SectionHeading } from "../components/SectionHeading";
 import reviewCameron from "./c024b121-4936-4fd7-90f2-cb089c561dab.jpg";
@@ -78,6 +78,17 @@ export function ReviewsSection() {
               key={i}
               className="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm hover:shadow-lg transition-all duration-300"
             >
+              <div className="flex items-center justify-between mb-5 pb-4 border-b border-stone-100">
+                <div className="inline-flex items-center gap-1.5 bg-[#fef2f2] text-[#C8181B] px-3 py-1.5 rounded-lg text-xs font-bold border border-[#fde8e8]">
+                  <CalendarDays className="w-3.5 h-3.5" />
+                  {review.date}
+                </div>
+                <div className="inline-flex items-center gap-1.5 bg-stone-50 text-[#141414] px-3 py-1.5 rounded-lg text-xs font-bold border border-stone-200">
+                  <MapPin className="w-3.5 h-3.5 text-[#C8181B]" />
+                  {review.location}
+                </div>
+              </div>
+
               <div className="flex items-start justify-between gap-4">
                 <div className="flex items-center gap-3">
                   <div className="w-11 h-11 bg-[#fde8e8] rounded-full flex items-center justify-center text-[#C8181B] font-bold">
@@ -96,13 +107,12 @@ export function ReviewsSection() {
                 </div>
               </div>
 
-              <div className="flex items-center justify-between mt-4">
+              <div className="flex items-center mt-4">
                 <div className="flex items-center gap-1 text-yellow-500">
                   {[1, 2, 3, 4, 5].map((s) => (
                     <Star key={s} className="w-4 h-4 fill-current" />
                   ))}
                 </div>
-                <span className="text-xs font-semibold text-[#6E6660]">{review.date}</span>
               </div>
 
               <div className="mt-4 rounded-2xl border border-stone-200 bg-[#fafafa] aspect-[4/3] overflow-hidden">
@@ -117,8 +127,7 @@ export function ReviewsSection() {
 
               <p className="text-sm text-[#6E6660] mt-4">{review.job}</p>
 
-              <div className="mt-5 flex items-center justify-between text-xs text-[#6E6660]">
-                <span className="font-semibold text-[#6E6660]">{review.location}</span>
+              <div className="mt-5 flex items-center justify-end text-xs text-[#6E6660]">
                 <span>Geplaatst op Werkspot</span>
               </div>
             </div>

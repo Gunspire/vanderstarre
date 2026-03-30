@@ -56,6 +56,11 @@ export function Header() {
       desc: "Bekijk al onze timmerwerkzaamheden",
     },
     {
+      label: "Offerte aanvragen",
+      href: "/offerte",
+      desc: "Bereken direct uw prijsindicatie",
+    },
+    {
       label: "Vlizotrap plaatsen",
       href: onHome ? "#services" : "/#services",
       desc: "Ruimtebesparende vlizotrap vakkundig ingebouwd",
@@ -147,14 +152,21 @@ export function Header() {
             </div>
 
             <a
-              href="#reviews"
+              href="/offerte"
+              className="text-[#6E6660] hover:text-[#C8181B] font-medium transition-colors"
+            >
+              Offertetool
+            </a>
+
+            <a
+              href={onHome ? "#reviews" : "/#reviews"}
               className="text-[#6E6660] hover:text-[#C8181B] font-medium transition-colors"
             >
               Reviews
             </a>
 
             <a
-              href="#faq"
+              href={onHome ? "#faq" : "/#faq"}
               className="text-[#6E6660] hover:text-[#C8181B] font-medium transition-colors"
             >
               FAQ
@@ -201,14 +213,21 @@ export function Header() {
         <div className="md:hidden bg-white border-t border-stone-100 p-4 absolute w-full shadow-lg">
           <div className="flex flex-col space-y-4">
             <a
-              href="#reviews"
+              href="/offerte"
+              className="text-lg font-medium text-[#141414] py-2 border-b border-stone-50"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Offertetool
+            </a>
+            <a
+              href={onHome ? "#reviews" : "/#reviews"}
               className="text-lg font-medium text-[#141414] py-2 border-b border-stone-50"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Reviews
             </a>
             <a
-              href="#faq"
+              href={onHome ? "#faq" : "/#faq"}
               className="text-lg font-medium text-[#141414] py-2 border-b border-stone-50"
               onClick={() => setIsMobileMenuOpen(false)}
             >

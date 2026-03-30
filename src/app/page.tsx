@@ -8,7 +8,6 @@ import { CtaBand } from "../sections/CtaBand";
 import { FaqSection } from "../sections/FaqSection";
 import { Footer } from "../sections/Footer";
 import { HeroSection } from "../sections/HeroSection";
-import { OpenTrapQuoteSection } from "../sections/OpenTrapQuoteSection";
 import { ProjectsSection } from "../sections/ProjectsSection";
 import { ReviewsSection } from "../sections/ReviewsSection";
 import { ServiceAreaSection } from "../sections/ServiceAreaSection";
@@ -34,9 +33,6 @@ export default function Home() {
       </Reveal>
       <Reveal>
         <ProjectsSection />
-      </Reveal>
-      <Reveal>
-        <OpenTrapQuoteSection />
       </Reveal>
       <Reveal>
         <ReviewsSection />

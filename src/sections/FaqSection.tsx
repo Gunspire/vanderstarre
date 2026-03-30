@@ -13,20 +13,24 @@ export function FaqSection() {
 
         <div className="bg-white rounded-2xl shadow-sm border border-stone-200 p-6 md:p-8 space-y-2">
           <FAQItem
-            question="Kunt u een gratis offerte geven?"
-            answer="Ja, wij bieden een vrijblijvende offerte aan. Na een kort gesprek of bezoek ontvangt u een duidelijke prijsopgave zonder verplichtingen."
+            question="Kan ik mijn open trap laten dichtmaken?"
+            answer="Absoluut. Dit is een van onze meest gevraagde diensten. We plaatsen stootborden tussen de bestaande treden, wat niet alleen veiliger is (vooral voor kinderen), maar ook zorgt voor minder warmteverlies naar boven. Gebruik gerust onze Offertetool bovenaan de pagina voor een snelle prijsindicatie!"
           />
           <FAQItem
-            question="Bent u KvK geregistreerd en verzekerd?"
-            answer="Ja, wij zijn geregistreerd bij de Kamer van Koophandel (KvK: 76281019) en werken volledig verzekerd voor uw gemoedsrust."
+            question="Wat is inbegrepen in de prijs voor het dichtmaken van een trap?"
+            answer="De prijs is inclusief het inmeten, het zagen en plaatsen van de stootborden, en de benodigde bevestigingsmaterialen. We zorgen voor een strakke, schilderklaar afwerking. U kunt dit makkelijk berekenen in onze Offertetool."
           />
           <FAQItem
-            question="Hoe lang duurt het plaatsen van een vlizotrap?"
-            answer="Het plaatsen van een vlizotrap duurt gemiddeld een halve tot volledige werkdag, afhankelijk van de situatie. Wij geven vooraf een duidelijke planning."
+            question="Doet u ook kleinere klussen en onderhoudswerk?"
+            answer="Jazeker. Naast grotere projecten zoals het plaatsen van (vlizo)trappen en scheidingswanden, komen wij ook graag langs voor het repareren of afhangen van deuren, het aftimmeren van kozijnen, en diverse andere onderhoudswerkzaamheden in huis."
           />
           <FAQItem
             question="Biedt u garantie op uw werk?"
-            answer="Ja, wij bieden garantie op al onze werkzaamheden. De exacte garantieperiode wordt per opdracht vastgelegd en schriftelijk bevestigd."
+            answer="Ja, wij staan volledig achter de kwaliteit van ons vakwerk. U krijgt altijd duidelijke afspraken vooraf en garantie op de door ons uitgevoerde werkzaamheden en geleverde materialen."
+          />
+          <FAQItem
+            question="In welke regio bent u werkzaam?"
+            answer="Ons werkgebied is voornamelijk Zoetermeer en de omliggende regio (inclusief Den Haag, Gouda, Rotterdam en omliggende dorpen). Twijfelt u of u binnen ons gebied valt? Neem gerust even contact op!"
           />
         </div>
       </div>

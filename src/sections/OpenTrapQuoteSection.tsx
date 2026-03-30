@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { CheckCircle2, ChevronRight } from "lucide-react";
+import { CheckCircle2, ChevronRight, MessageCircle, Mail, Smartphone } from "lucide-react";
 
 import { Button } from "../components/Button";
 import { SectionHeading } from "../components/SectionHeading";
@@ -19,6 +19,9 @@ const STAIR_MODELS = [
 export function OpenTrapQuoteSection() {
   const [riserCount, setRiserCount] = React.useState(16);
   const [stairModel, setStairModel] = React.useState(STAIR_MODELS[0].value);
+  const [name, setName] = React.useState("");
+  const [phone, setPhone] = React.useState("");
+  const [address, setAddress] = React.useState("");
   const [formStatus, setFormStatus] = React.useState<"idle" | "submitting" | "success">("idle");
 
   const selectedModel = STAIR_MODELS.find((item) => item.value === stairModel) ?? STAIR_MODELS[0];
@@ -120,17 +123,74 @@ export function OpenTrapQuoteSection() {
             <div className="rounded-3xl border border-stone-200 bg-white shadow-xl overflow-hidden">
               <div className="p-6 sm:p-8">
                 {formStatus === "success" ? (
-                  <div className="py-10 text-center">
-                    <div className="mx-auto w-14 h-14 rounded-full bg-green-100 flex items-center justify-center">
-                      <CheckCircle2 className="w-7 h-7 text-green-600" />
+                  <div className="py-6 sm:py-8">
+                    <div className="flex items-center justify-between mb-6">
+                      <h3 className="text-2xl font-bold text-[#141414]">Demo: Wat Ricardo ontvangt</h3>
+                      <div className="bg-[#C8181B]/10 text-[#C8181B] px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Demo Modus</div>
                     </div>
-                    <h3 className="mt-5 text-2xl font-bold text-[#141414]">Offerte-aanvraag verstuurd</h3>
-                    <p className="mt-2 text-[#666666] max-w-md mx-auto">
-                      Bedankt. Ricardo neemt contact met u op om de trap en uw wensen door te nemen.
+                    
+                    <p className="text-[#666666] mb-8 text-sm">
+                      Zodra een klant het formulier invult, ontvangt Ricardo direct de gegevens. Dit kan via WhatsApp of E-mail, zodat hij de klant meteen kan bellen.
                     </p>
-                    <Button variant="outline" className="mt-6" onClick={() => setFormStatus("idle")}>
-                      Nieuwe aanvraag
-                    </Button>
+
+                    <div className="grid md:grid-cols-2 gap-6">
+                      {/* WhatsApp Mock */}
+                      <div className="rounded-2xl border border-stone-200 bg-[#E5DDD5] overflow-hidden flex flex-col shadow-sm">
+                        <div className="bg-[#075E54] px-4 py-3 flex items-center gap-3">
+                          <MessageCircle className="text-white w-5 h-5" />
+                          <span className="text-white font-semibold">WhatsApp Notificatie</span>
+                        </div>
+                        <div className="p-4 flex-1">
+                          <div className="bg-white rounded-lg p-3 shadow-sm text-[13px] leading-relaxed relative border-l-4 border-green-500">
+                            <p><strong>Nieuwe Offerte Aanvraag 🚀</strong></p>
+                            <p className="mt-1">Dienst: Open trap dichtmaken</p>
+                            <p>Stootborden: {riserCount}</p>
+                            <p>Model: {selectedModel.label}</p>
+                            <p>Indicatieprijs: € {total.toFixed(2).replace(".", ",")}</p>
+                            <div className="bg-stone-50 p-2 rounded mt-2 text-xs">
+                              <p><strong>Klant:</strong> {name || "Jan de Vries"}</p>
+                              <p><strong>Tel:</strong> {phone || "06 12345678"}</p>
+                              <p><strong>Adres:</strong> {address || "2700 AB, 12"}</p>
+                            </div>
+                            <p className="text-blue-500 mt-2 font-medium">Bel klant direct</p>
+                            <span className="text-[10px] text-gray-400 absolute bottom-2 right-2">Nu</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Email Mock */}
+                      <div className="rounded-2xl border border-stone-200 bg-white overflow-hidden shadow-sm flex flex-col">
+                        <div className="bg-[#fcfcfc] border-b border-stone-200 px-4 py-3 flex items-center gap-3">
+                          <Mail className="text-[#666666] w-5 h-5" />
+                          <span className="text-[#141414] font-semibold">E-mail Inbox</span>
+                        </div>
+                        <div className="p-4 text-sm flex-1">
+                          <div className="flex items-center gap-2 mb-3 pb-3 border-b border-stone-100">
+                            <div className="w-8 h-8 rounded-full bg-[#C8181B]/10 flex items-center justify-center font-bold text-[#C8181B]">W</div>
+                            <div>
+                              <p className="font-semibold text-[#141414]">Website Notificatie</p>
+                              <p className="text-xs text-[#666666]">Aan: info@vanderstarre.nl</p>
+                            </div>
+                          </div>
+                          <div className="space-y-1 text-[#141414]">
+                            <p className="font-semibold mb-2">Aanvraag: {name || "Jan de Vries"}</p>
+                            <p className="text-xs text-[#666666]">Beste Ricardo, er is een nieuwe aanvraag binnengekomen:</p>
+                            <div className="bg-stone-50 p-3 rounded-lg mt-3 mb-3 border border-stone-100 text-xs">
+                              <p><strong>Specificaties:</strong> {riserCount} stootborden, {selectedModel.label}</p>
+                              <p><strong>Berekende prijs:</strong> € {total.toFixed(2).replace(".", ",")}</p>
+                            </div>
+                            <p className="text-xs">Telefoonnummer: <strong>{phone || "06 12345678"}</strong></p>
+                            <p className="text-xs">Adres: <strong>{address || "2700 AB, 12"}</strong></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="mt-8 text-center border-t border-stone-200 pt-6">
+                      <Button variant="outline" onClick={() => setFormStatus("idle")}>
+                        Terug naar formulier
+                      </Button>
+                    </div>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-6">
@@ -178,11 +238,24 @@ export function OpenTrapQuoteSection() {
                     <div className="rounded-2xl border border-stone-200 bg-[#fafafa] p-5">
                       <p className="text-sm font-bold text-[#141414] mb-3">Stap 3</p>
                       <div className="grid sm:grid-cols-2 gap-4">
+                        <div className="space-y-1.5 sm:col-span-2">
+                          <label className="text-sm font-semibold text-[#141414]">Adres (Postcode & Huisnummer) *</label>
+                          <input
+                            required
+                            type="text"
+                            value={address}
+                            onChange={(e) => setAddress(e.target.value)}
+                            className="w-full px-4 py-2.5 rounded-lg border border-stone-200 focus:border-[#C8181B] focus:ring-2 focus:ring-[#C8181B]/20 outline-none transition-all bg-white"
+                            placeholder="bijv. 2700 AB, 12"
+                          />
+                        </div>
                         <div className="space-y-1.5">
                           <label className="text-sm font-semibold text-[#141414]">Naam *</label>
                           <input
                             required
                             type="text"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
                             className="w-full px-4 py-2.5 rounded-lg border border-stone-200 focus:border-[#C8181B] focus:ring-2 focus:ring-[#C8181B]/20 outline-none transition-all bg-white"
                             placeholder="Volledige naam"
                           />
@@ -192,6 +265,8 @@ export function OpenTrapQuoteSection() {
                           <input
                             required
                             type="tel"
+                            value={phone}
+                            onChange={(e) => setPhone(e.target.value)}
                             className="w-full px-4 py-2.5 rounded-lg border border-stone-200 focus:border-[#C8181B] focus:ring-2 focus:ring-[#C8181B]/20 outline-none transition-all bg-white"
                             placeholder="06 23 755 436"
                           />
@@ -199,7 +274,7 @@ export function OpenTrapQuoteSection() {
                       </div>
                     </div>
 
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pt-2">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pt-2 border-t-0">
                       <p className="text-xs text-[#666666]">Dit is een simpele prijsindicatie.</p>
                       <Button type="submit">Offerte aanvragen</Button>
                     </div>

@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 
 import { SectionHeading } from "../components/SectionHeading";
-import trustSectionImage from "./59a38914-530f-43a5-ae71-2f9f180ac7be.jpg";
+import trustSectionImage from "./image (2).png";
 
 export function WhyChooseUs() {
   return (
@@ -114,7 +114,7 @@ export function WhyChooseUs() {
               <div className="aspect-[4/5] relative">
                 <img
                   src={trustSectionImage.src}
-                  alt="Scheidingswand project van Van der Starre"
+                  alt="Open trap dichtmaken project van Van der Starre"
                   className="absolute inset-0 h-full w-full object-cover"
                 />
               </div>
