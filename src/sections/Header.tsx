@@ -159,6 +159,13 @@ export function Header() {
             </a>
 
             <a
+              href="/offerte-2"
+              className="text-[#6E6660] hover:text-[#C8181B] font-medium transition-colors"
+            >
+              Offerte Trap
+            </a>
+
+            <a
               href={onHome ? "#reviews" : "/#reviews"}
               className="text-[#6E6660] hover:text-[#C8181B] font-medium transition-colors"
             >
@@ -218,6 +225,13 @@ export function Header() {
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Offertetool
+            </a>
+            <a
+              href="/offerte-2"
+              className="text-lg font-medium text-[#141414] py-2 border-b border-stone-50"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Offerte Trap
             </a>
             <a
               href={onHome ? "#reviews" : "/#reviews"}
