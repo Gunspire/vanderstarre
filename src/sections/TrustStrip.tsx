@@ -21,7 +21,7 @@ export function TrustStrip() {
     { icon: ThumbsUp, text: "5+ jaar vakervaring" },
     { icon: Wrench, text: "Vakkundig timmerwerk" },
     { icon: BadgeCheck, text: "Particulieren & bedrijven" },
-    { icon: CheckCircle2, text: "Zoetermeer &amp; omgeving" },
+    { icon: CheckCircle2, text: "Zoetermeer & omgeving" },
   ];
 
   return (

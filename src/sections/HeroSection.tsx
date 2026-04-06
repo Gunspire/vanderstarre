@@ -1,219 +1,96 @@
 "use client";
 
 import React from "react";
-import { BadgeCheck, CheckCircle2, MapPin, Star } from "lucide-react";
-
-import { Button } from "../components/Button";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
+import Link from "next/link";
 import firstHeroImage from "./59a38914-530f-43a5-ae71-2f9f180ac7be.jpg";
-import secondHeroImage from "./22c67cf7-e2c4-46f9-a848-fa147641752e.jpg";
-import thirdHeroImage from "./a2179f0d-f5a3-4378-ad51-a25e0e9dfbcd.jpg";
-import { cn } from "../lib/cn";
 
 export function HeroSection() {
-  const heroImages = [firstHeroImage.src, secondHeroImage.src, thirdHeroImage.src];
-  const [heroImageIndex, setHeroImageIndex] = React.useState(0);
-  const [formStatus, setFormStatus] = React.useState<"idle" | "submitting" | "success">(
-    "idle"
-  );
-
-  React.useEffect(() => {
-    const id = window.setInterval(() => {
-      setHeroImageIndex((currentIndex) => (currentIndex + 1) % heroImages.length);
-    }, 5000);
-
-    return () => window.clearInterval(id);
-  }, [heroImages.length]);
-
-  const handleQuoteSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setFormStatus("submitting");
-    window.setTimeout(() => {
-      setFormStatus("success");
-    }, 1500);
-  };
-
   return (
-    <section className="relative pt-12 pb-20 lg:pt-24 lg:pb-24 overflow-hidden bg-white">
-      <div className="absolute inset-0 z-0 bg-white">
-        {heroImages.map((imageSrc, index) => (
-          <img
-            key={imageSrc}
-            src={imageSrc}
-            alt=""
-            aria-hidden="true"
-            className={cn(
-              "absolute inset-0 h-full w-full object-cover transition-opacity duration-[1800ms] ease-in-out",
-              index === heroImageIndex ? "opacity-100" : "opacity-0"
-            )}
-          />
-        ))}
-        <div className="absolute inset-0 bg-black/25" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#141414]/82 via-[#141414]/48 to-[#141414]/14" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(200,24,27,0.22),transparent_34%)]" />
-      </div>
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          <div className="lg:col-span-8">
-            <div className="max-w-3xl">
-              <div className="inline-flex items-center gap-2 bg-white/12 border border-white/20 rounded-full px-4 py-1.5 mb-6 backdrop-blur-sm">
-                <MapPin className="w-4 h-4 text-[#C8181B]" />
-                <span className="text-white text-sm font-medium">Zoetermeer &amp; omgeving</span>
+    <section className="w-full flex flex-col lg:flex-row items-stretch min-h-[calc(100vh-80px)] border-b border-stone-300">
+      
+      {/* Text Side */}
+      <div className="w-full lg:w-1/2 bg-white p-10 md:p-16 lg:p-24 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-stone-300 relative overflow-hidden">
+            {/* Decorative background element */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-stone-50 rounded-full mix-blend-multiply filter blur-3xl opacity-50 -translate-y-1/2 translate-x-1/4 z-0" />
+            
+            <div className="relative z-10">
+              <div className="inline-flex items-center gap-2 px-3 py-1 mb-8 border border-stone-200 bg-stone-50 rounded-full">
+                <div className="w-2 h-2 rounded-full bg-[#C8181B] animate-pulse" />
+                <span className="text-xs font-bold uppercase tracking-widest text-[#141414]">Zoetermeer & Omstreken</span>
               </div>
 
-              <h1 className="text-3xl lg:text-5xl font-bold text-white leading-tight mb-6">
-                Vakkundig timmerwerk voor
-                <span className="text-[#C8181B]"> uw woning</span>
+              <h1 className="text-5xl md:text-6xl lg:text-[4rem] font-light text-[#2b2b2b] tracking-tight leading-[1.1] mb-8">
+                Vakkundig <br />
+                <span className="font-bold">timmerwerk</span><br />
+                voor uw woning.
               </h1>
-
-              <p className="text-lg text-white/88 mb-8 leading-relaxed max-w-xl">
-                Ricardo van der Starre levert kwalitatieve timmerwerkzaamheden en onderhoud voor
-                particulieren. Meer dan 5 jaar vakervaring, duidelijke communicatie en altijd met
-                garantie.
+              
+              <p className="text-stone-500 text-lg mb-12 max-w-md leading-relaxed">
+                Ricardo van der Starre levert kwalitatieve timmerwerkzaamheden en onderhoud voor particulieren. 
+                Meer dan 5 jaar vakervaring en altijd met garantie.
               </p>
-
-              <div className="flex flex-col sm:flex-row gap-4 mb-10">
-                <Button size="lg" as="a" href="#contact">
-                  Gratis offerte aanvragen
-                </Button>
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="border-white text-white hover:bg-white hover:text-[#141414]"
-                  as="a"
-                  href="#projects"
+              
+              <div className="space-y-4 sm:space-y-0 sm:flex sm:gap-6">
+                <Link 
+                  href="/offertes" 
+                  className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#141414] text-white font-bold text-sm uppercase tracking-wider hover:bg-[#C8181B] transition-colors group"
                 >
-                  Bekijk ons werk
-                </Button>
+                  Start Offerte Aanvraag 
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Link>
+                <Link 
+                  href="#projecten" 
+                  className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-white text-[#141414] border border-stone-300 font-bold text-sm uppercase tracking-wider hover:border-[#141414] transition-colors"
+                >
+                  Bekijk Projecten
+                </Link>
               </div>
 
-              <div className="flex items-center gap-8 pt-8 border-t border-white/20">
-                <div className="flex flex-col max-w-[220px]">
-                  <p className="text-white/82 italic text-sm mb-2">
-                    &ldquo;Ricardo heeft uitstekend werk geleverd. Netjes, op tijd en precies zoals afgesproken.&rdquo;
-                  </p>
-                  <div className="flex items-center gap-2">
-                    <div className="w-6 h-6 bg-[#C8181B] rounded-full flex items-center justify-center text-xs font-bold text-white">
-                      J
+              <div className="mt-12 pt-8 border-t border-stone-200">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-6">
+                  <div className="flex -space-x-3">
+                    <div className="w-10 h-10 rounded-full border-2 border-white bg-stone-200 flex items-center justify-center text-xs font-bold text-stone-600">J</div>
+                    <div className="w-10 h-10 rounded-full border-2 border-white bg-stone-300 flex items-center justify-center text-xs font-bold text-stone-600">M</div>
+                    <div className="w-10 h-10 rounded-full border-2 border-white bg-[#C8181B] flex items-center justify-center text-xs font-bold text-white">4.9</div>
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-1 text-yellow-400 mb-1">
+                      {[1, 2, 3, 4, 5].map((i) => (
+                        <svg key={i} className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                          <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                        </svg>
+                      ))}
                     </div>
-                    <span className="text-white/78 text-xs font-bold">J. de Vries, Zoetermeer</span>
+                    <p className="text-xs font-bold uppercase tracking-widest text-[#141414]">Beoordeeld op Werkspot</p>
                   </div>
-                </div>
-                <div className="h-8 w-px bg-white/20"></div>
-                <div className="flex flex-col">
-                  <div className="flex text-yellow-400 mb-1">
-                    {[1, 2, 3, 4, 5].map((i) => (
-                      <Star key={i} className="w-4 h-4 fill-current" />
-                    ))}
-                  </div>
-                  <span className="text-white/82 text-sm">4.9/5 op Werkspot</span>
                 </div>
               </div>
             </div>
           </div>
 
-          <div
-            className="lg:col-span-4 bg-white/96 backdrop-blur-sm rounded-2xl shadow-2xl p-6 sm:p-8 transform hover:scale-[1.01] transition-transform duration-300"
-            id="contact"
-          >
-            {formStatus === "success" ? (
-              <div className="h-full flex flex-col items-center justify-center text-center py-12">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6">
-                  <CheckCircle2 className="w-8 h-8 text-green-600" />
+          {/* Image Side */}
+          <div className="w-full lg:w-1/2 relative min-h-[500px] lg:min-h-full bg-stone-100">
+            <img 
+              src={firstHeroImage.src} 
+              alt="Timmerwerk op maat" 
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            {/* Soft gradient overlay to make it blend nicely */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#141414]/40 to-transparent" />
+            
+            {/* Floating Quality Badge */}
+            <div className="absolute bottom-8 left-8 bg-white p-6 shadow-xl border border-stone-100 max-w-[240px]">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-8 h-8 rounded-full bg-green-50 flex items-center justify-center shrink-0">
+                  <CheckCircle2 className="w-5 h-5 text-green-600" />
                 </div>
-                <h3 className="text-2xl font-bold text-[#141414] mb-2">Offerte aangevraagd!</h3>
-                <p className="text-[#6E6660]">
-                  Wij nemen binnen 24 uur contact met u op.
-                </p>
-                <Button
-                  variant="outline"
-                  className="mt-6"
-                  onClick={() => setFormStatus("idle")}
-                >
-                  Nog een aanvraag
-                </Button>
+                <span className="font-bold text-[#141414] text-sm uppercase tracking-wider">Vakmanschap</span>
               </div>
-            ) : (
-              <>
-                <div className="mb-6">
-                  <h3 className="text-2xl font-bold text-[#141414]">Gratis offerte</h3>
-                  <p className="text-[#6E6660] mt-1">Vrijblijvend. Snel antwoord.</p>
-                </div>
-
-                <form onSubmit={handleQuoteSubmit} className="space-y-4">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="space-y-1.5">
-                      <label className="text-sm font-semibold text-[#141414]">Naam</label>
-                      <input
-                        type="text"
-                        required
-                        className="w-full px-4 py-2.5 rounded-lg border border-stone-200 focus:border-[#C8181B] focus:ring-2 focus:ring-[#C8181B]/20 outline-none transition-all"
-                        placeholder="Volledige naam"
-                      />
-                    </div>
-                    <div className="space-y-1.5">
-                      <label className="text-sm font-semibold text-[#141414]">Postcode</label>
-                      <input
-                        type="text"
-                        required
-                        className="w-full px-4 py-2.5 rounded-lg border border-stone-200 focus:border-[#C8181B] focus:ring-2 focus:ring-[#C8181B]/20 outline-none transition-all"
-                        placeholder="bijv. 2700 AB"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="space-y-1.5">
-                    <label className="text-sm font-semibold text-[#141414]">Telefoonnummer</label>
-                    <input
-                      type="tel"
-                      required
-                      className="w-full px-4 py-2.5 rounded-lg border border-stone-200 focus:border-[#C8181B] focus:ring-2 focus:ring-[#C8181B]/20 outline-none transition-all"
-                      placeholder="06 00 000 000"
-                    />
-                  </div>
-
-                  <div className="space-y-1.5">
-                    <label className="text-sm font-semibold text-[#141414]">Gewenste dienst</label>
-                    <select className="w-full px-4 py-2.5 rounded-lg border border-stone-200 focus:border-[#C8181B] focus:ring-2 focus:ring-[#C8181B]/20 outline-none transition-all bg-white">
-                      <option>Vlizotrap plaatsen</option>
-                      <option>Binnenwand plaatsen</option>
-                      <option>Trap plaatsen of renoveren</option>
-                      <option>Trapkast maken</option>
-                      <option>Traptreden dicht maken</option>
-                      <option>Trapleuningen plaatsen</option>
-                      <option>Deuren repareren</option>
-                      <option>Veranda / overkapping</option>
-                      <option>Plafond gipsen</option>
-                      <option>Wanden gipsen</option>
-                      <option>Egaliseren</option>
-                      <option>Velux dakraam vervangen</option>
-                      <option>Deurkozijnen plaatsen of vervangen</option>
-                      <option>Deuren afhangen</option>
-                    </select>
-                  </div>
-
-                  <div className="space-y-1.5">
-                    <label className="text-sm font-semibold text-[#141414]">Omschrijving</label>
-                    <textarea
-                      rows={3}
-                      className="w-full px-4 py-2.5 rounded-lg border border-stone-200 focus:border-[#C8181B] focus:ring-2 focus:ring-[#C8181B]/20 outline-none transition-all resize-none"
-                      placeholder="Beschrijf kort de werkzaamheden..."
-                    ></textarea>
-                  </div>
-
-                  <Button type="submit" className="w-full text-lg" disabled={formStatus === "submitting"}>
-                    {formStatus === "submitting" ? "Versturen..." : "Gratis offerte aanvragen"}
-                  </Button>
-
-                  <p className="text-xs text-center text-[#6E6660] mt-4">
-                    Uw gegevens zijn veilig. Wij delen nooit uw gegevens.
-                  </p>
-                </form>
-              </>
-            )}
+              <p className="text-stone-500 text-sm">Altijd met garantie op ons geleverde werk.</p>
+            </div>
           </div>
-        </div>
-      </div>
+
     </section>
   );
 }

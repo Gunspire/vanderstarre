@@ -4,7 +4,6 @@ import { Reveal } from "../components/Reveal";
 import { BeforeAfterSection } from "../sections/BeforeAfterSection";
 import { BottomCtaSection } from "../sections/BottomCtaSection";
 import { ChatWidget } from "../sections/ChatWidget";
-import { CtaBand } from "../sections/CtaBand";
 import { FaqSection } from "../sections/FaqSection";
 import { Footer } from "../sections/Footer";
 import { HeroSection } from "../sections/HeroSection";
@@ -39,9 +38,6 @@ export default function Home() {
       </Reveal>
       <Reveal>
         <FaqSection />
-      </Reveal>
-      <Reveal>
-        <CtaBand />
       </Reveal>
       <Reveal>
         <ServiceAreaSection />

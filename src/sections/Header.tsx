@@ -4,11 +4,9 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { ChevronDown, Menu, Phone, Star, X } from "lucide-react";
+import { ChevronDown, Menu, Phone, X, ArrowRight } from "lucide-react";
 
-import { Button } from "../components/Button";
 import headerLogo from "./WhatsApp Image 2026-03-30 at 14.53.50.jpeg";
-import werkspotLogo from "./images.png";
 
 export function Header() {
   const pathname = usePathname();
@@ -51,16 +49,6 @@ export function Header() {
 
   const servicesItems = [
     {
-      label: "Alle diensten",
-      href: onHome ? "#services" : "/#services",
-      desc: "Bekijk al onze timmerwerkzaamheden",
-    },
-    {
-      label: "Offerte aanvragen",
-      href: "/offerte",
-      desc: "Bereken direct uw prijsindicatie",
-    },
-    {
       label: "Vlizotrap plaatsen",
       href: onHome ? "#services" : "/#services",
       desc: "Ruimtebesparende vlizotrap vakkundig ingebouwd",
@@ -93,25 +81,25 @@ export function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-stone-200 shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-50 bg-white border-b border-stone-300">
+      <div className="max-w-[100rem] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <div className="flex items-center gap-2">
             <Link href="/" className="flex items-center">
               <Image
                 src={headerLogo}
                 alt="Van der Starre Timmer- en Onderhoudswerkzaamheden"
-                className="h-[72px] sm:h-[84px] w-auto"
+                className="h-12 sm:h-14 w-auto object-contain"
                 priority
               />
               <span className="sr-only">Van der Starre Timmer- en Onderhoudwerkzaamheden</span>
             </Link>
           </div>
 
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-8">
             <div
               ref={servicesRef}
-              className="relative"
+              className="relative h-20 flex items-center"
               onMouseEnter={openServices}
               onMouseLeave={closeServicesSoon}
             >
@@ -120,94 +108,89 @@ export function Header() {
                 onClick={() => (isServicesOpen ? setIsServicesOpen(false) : openServices())}
                 aria-haspopup="menu"
                 aria-expanded={isServicesOpen}
-                className="inline-flex items-center gap-2 text-[#6E6660] hover:text-[#C8181B] font-medium transition-colors"
+                className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-[#141414] hover:text-[#C8181B] transition-colors h-full"
               >
                 Diensten
-                <ChevronDown className="w-4 h-4" />
+                <ChevronDown className="w-3 h-3" />
               </button>
 
               {isServicesOpen && (
                 <div
                   role="menu"
-                  className="absolute left-0 mt-2 w-[360px] rounded-2xl border border-stone-200 bg-white shadow-xl overflow-hidden"
+                  className="absolute top-20 left-0 w-[400px] border border-stone-300 bg-white shadow-sm overflow-hidden"
                   onMouseEnter={openServices}
                   onMouseLeave={closeServicesSoon}
                 >
-                  <div className="p-2">
-                    {servicesItems.map((it) => (
+                  <div className="flex flex-col">
+                    {servicesItems.map((it, idx) => (
                       <a
                         key={it.label}
                         href={it.href}
                         role="menuitem"
-                        className="block rounded-xl px-4 py-3 hover:bg-stone-50 transition-colors"
+                        className={`block px-6 py-4 hover:bg-[#faf9f7] transition-colors group ${
+                          idx !== servicesItems.length - 1 ? "border-b border-stone-200" : ""
+                        }`}
                         onClick={() => setIsServicesOpen(false)}
                       >
-                        <div className="text-sm font-extrabold text-[#141414]">{it.label}</div>
-                        <div className="text-xs font-semibold text-[#6E6660] mt-1">{it.desc}</div>
+                        <div className="text-xs font-bold uppercase tracking-widest text-[#141414] group-hover:text-[#C8181B] transition-colors">{it.label}</div>
+                        <div className="text-stone-500 text-sm mt-1">{it.desc}</div>
                       </a>
                     ))}
                   </div>
                 </div>
               )}
             </div>
-
+            
             <a
-              href="/offerte"
-              className="text-[#6E6660] hover:text-[#C8181B] font-medium transition-colors"
+              href={onHome ? "#projecten" : "/#projecten"}
+              className="text-[10px] font-bold uppercase tracking-widest text-[#141414] hover:text-[#C8181B] transition-colors"
             >
-              Offertetool
+              Projecten
             </a>
-
+            
             <a
-              href="/offerte-2"
-              className="text-[#6E6660] hover:text-[#C8181B] font-medium transition-colors"
+              href="/over-ons"
+              className="text-[10px] font-bold uppercase tracking-widest text-[#141414] hover:text-[#C8181B] transition-colors"
             >
-              Offerte Trap
+              Over Ons
             </a>
-
+            
             <a
-              href={onHome ? "#reviews" : "/#reviews"}
-              className="text-[#6E6660] hover:text-[#C8181B] font-medium transition-colors"
+              href="/werkwijze"
+              className="text-[10px] font-bold uppercase tracking-widest text-[#141414] hover:text-[#C8181B] transition-colors"
             >
-              Reviews
+              Werkwijze
             </a>
-
+            
             <a
-              href={onHome ? "#faq" : "/#faq"}
-              className="text-[#6E6660] hover:text-[#C8181B] font-medium transition-colors"
+              href="/contact"
+              className="text-[10px] font-bold uppercase tracking-widest text-[#141414] hover:text-[#C8181B] transition-colors"
             >
-              FAQ
+              Contact
             </a>
           </nav>
 
           <div className="hidden md:flex items-center gap-6">
-            <div className="hidden lg:inline-flex items-center gap-2 rounded-full border border-stone-200 bg-white px-3 py-1.5">
-              <div className="flex items-center gap-0.5 text-yellow-500">
-                {[1, 2, 3, 4, 5].map((i) => (
-                  <Star key={i} className="w-3.5 h-3.5 fill-current" />
-                ))}
+            <a
+              href="tel:+31623755436"
+              className="flex items-center gap-3 text-[10px] font-bold uppercase tracking-widest text-[#141414] hover:text-[#C8181B] transition-colors"
+            >
+              <div className="w-8 h-8 rounded-full border border-stone-300 flex items-center justify-center">
+                <Phone className="w-3.5 h-3.5" />
               </div>
-              <span className="text-xs font-bold text-[#141414] tabular-nums">4.9</span>
-              <div className="h-4 w-px bg-stone-200" aria-hidden="true" />
-              <img src={werkspotLogo.src} alt="Werkspot" className="h-5 w-5 rounded-full object-cover" />
-            </div>
-            <div className="flex flex-col items-end">
-              <span className="text-xs text-[#6E6660] font-medium">Bel voor een offerte</span>
-              <a
-                href="tel:+31623755436"
-                className="flex items-center gap-2 text-lg font-bold text-[#141414] hover:text-[#C8181B] transition-colors"
-              >
-                <Phone className="w-5 h-5 text-[#C8181B]" />
-                +31 6 23755436
-              </a>
-            </div>
-            <Button as="a" href={onHome ? "#contact" : "/#contact"}>
+              <span>Bel nu: <br className="hidden lg:block" />+31 6 23755436</span>
+            </a>
+            <Link 
+              href="/offertes" 
+              className="inline-flex items-center justify-center gap-3 px-6 py-4 bg-[#141414] text-white font-bold text-xs uppercase tracking-wider hover:bg-[#C8181B] transition-colors group"
+            >
               Gratis offerte
-            </Button>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
           </div>
 
           <button
-            className="md:hidden p-2 text-[#6E6660]"
+            className="md:hidden p-2 text-[#141414]"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label={isMobileMenuOpen ? "Menu sluiten" : "Menu openen"}
           >
@@ -217,64 +200,74 @@ export function Header() {
       </div>
 
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-white border-t border-stone-100 p-4 absolute w-full shadow-lg">
-          <div className="flex flex-col space-y-4">
-            <a
-              href="/offerte"
-              className="text-lg font-medium text-[#141414] py-2 border-b border-stone-50"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Offertetool
-            </a>
-            <a
-              href="/offerte-2"
-              className="text-lg font-medium text-[#141414] py-2 border-b border-stone-50"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Offerte Trap
-            </a>
-            <a
-              href={onHome ? "#reviews" : "/#reviews"}
-              className="text-lg font-medium text-[#141414] py-2 border-b border-stone-50"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Reviews
-            </a>
-            <a
-              href={onHome ? "#faq" : "/#faq"}
-              className="text-lg font-medium text-[#141414] py-2 border-b border-stone-50"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              FAQ
-            </a>
-
-            <div className="pt-2">
-              <div className="text-xs font-extrabold tracking-wider text-[#6E6660] uppercase mb-2">
-                Diensten
-              </div>
-              <div className="flex flex-col">
-                {servicesItems.map((it) => (
-                  <a
-                    key={it.label}
-                    href={it.href}
-                    className="text-lg font-medium text-[#141414] py-2 border-b border-stone-50"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {it.label}
-                  </a>
-                ))}
-              </div>
+        <div className="md:hidden bg-white border-b border-stone-300 absolute w-full shadow-sm">
+          <div className="flex flex-col">
+            <div className="px-4 py-3 bg-[#faf9f7] border-b border-stone-200 text-[10px] font-bold uppercase tracking-widest text-stone-500">
+              Diensten
+            </div>
+            <div className="flex flex-col px-4">
+              {servicesItems.map((it) => (
+                <a
+                  key={it.label}
+                  href={it.href}
+                  className="text-xs font-bold uppercase tracking-widest text-[#141414] py-4 border-b border-stone-200"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {it.label}
+                </a>
+              ))}
             </div>
 
-            <a
-              href="tel:+31623755436"
-              className="flex items-center gap-2 text-[#C8181B] font-bold py-2"
-            >
-              <Phone className="w-5 h-5" /> +31 6 23755436
-            </a>
-            <Button as="a" href={onHome ? "#contact" : "/#contact"} className="w-full">
-              Gratis offerte
-            </Button>
+            <div className="px-4 py-3 bg-[#faf9f7] border-y border-stone-200 mt-4 text-[10px] font-bold uppercase tracking-widest text-stone-500">
+              Navigatie
+            </div>
+            <div className="flex flex-col px-4">
+              <a
+                href={onHome ? "#projecten" : "/#projecten"}
+                className="text-xs font-bold uppercase tracking-widest text-[#141414] py-4 border-b border-stone-200"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Projecten
+              </a>
+              <a
+                href="/over-ons"
+                className="text-xs font-bold uppercase tracking-widest text-[#141414] py-4 border-b border-stone-200"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Over Ons
+              </a>
+              <a
+                href="/werkwijze"
+                className="text-xs font-bold uppercase tracking-widest text-[#141414] py-4 border-b border-stone-200"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Werkwijze
+              </a>
+              <a
+                href="/contact"
+                className="text-xs font-bold uppercase tracking-widest text-[#141414] py-4 border-b border-stone-200"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Contact
+              </a>
+            </div>
+
+            <div className="p-6 bg-[#faf9f7] flex flex-col gap-4 mt-4">
+              <a
+                href="tel:+31623755436"
+                className="flex items-center justify-center gap-3 px-6 py-4 bg-white border border-stone-300 text-[#141414] font-bold text-xs uppercase tracking-wider"
+              >
+                <Phone className="w-4 h-4" /> +31 6 23755436
+              </a>
+              <Link 
+                href="/offertes" 
+                className="flex items-center justify-center gap-3 px-6 py-4 bg-[#141414] text-white font-bold text-xs uppercase tracking-wider"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Gratis offerte
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
           </div>
         </div>
       )}

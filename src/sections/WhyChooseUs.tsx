@@ -9,116 +9,90 @@ import {
   Users,
 } from "lucide-react";
 
-import { SectionHeading } from "../components/SectionHeading";
 import trustSectionImage from "./image (2).png";
 
 export function WhyChooseUs() {
   return (
-    <section className="bg-white py-14 lg:py-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-12 gap-10 items-start">
-          <div className="lg:col-span-7">
-            <SectionHeading subtitle="Waarom Van der Starre" className="mb-8">
-              Gebouwd op vakmanschap &amp; vertrouwen
-            </SectionHeading>
+    <section className="w-full flex flex-col lg:flex-row items-stretch border-b border-stone-300">
+      
+      {/* Image Side (Left) */}
+      <div className="w-full lg:w-1/2 relative min-h-[400px] lg:min-h-auto bg-stone-100 border-b lg:border-b-0 lg:border-r border-stone-300">
+        <img
+          src={trustSectionImage.src}
+          alt="Open trap dichtmaken project van Van der Starre"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 shadow-[inset_0_0_60px_rgba(0,0,0,0.1)] pointer-events-none" />
+      </div>
 
-            <p className="text-[#6E6660] leading-relaxed text-base md:text-lg max-w-2xl">
-              Kwalitatief vakwerk, eerlijke prijzen en een vakman die u daadwerkelijk kunt vertrouwen.
-              Ricardo van der Starre behandelt uw woning als zijn eigen — en staat voor elk project
-              met garantie garant.
-            </p>
-
-            <div className="mt-7 grid grid-cols-1 sm:grid-cols-4 gap-3 max-w-2xl">
-              {[
-                { value: "5+", label: "Jaar ervaring", icon: Award },
-                { value: "4.9", label: "Gemiddelde beoordeling", icon: Star },
-                { value: "20+", label: "Tevreden klanten", icon: Users },
-                { value: "100%", label: "Garantie op werk", icon: CheckCircle2 },
-              ].map((s) => (
-                <div
-                  key={s.label}
-                  className="rounded-2xl border border-stone-200 bg-white px-4 py-3 shadow-sm flex items-center gap-3"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-[#fef2f2] border border-[#fde8e8] flex items-center justify-center shrink-0">
-                    <s.icon className="w-5 h-5 text-[#C8181B]" />
-                  </div>
-                  <div className="min-w-0">
-                    <p className="text-xl font-extrabold text-[#141414] leading-none">{s.value}</p>
-                    <p className="text-xs font-semibold text-[#6E6660] mt-1">{s.label}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-8 grid sm:grid-cols-2 gap-4">
-              <div className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm">
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-[#fde8e8] flex items-center justify-center">
-                    <ShieldCheck className="w-5 h-5 text-[#C8181B]" />
-                  </div>
-                  <div>
-                    <p className="font-bold text-[#141414]">KvK geregistreerd &amp; verzekerd</p>
-                    <p className="text-[#6E6660] text-sm mt-1">
-                      KvK: 76281019 — transparant en aanspreekbaar.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm">
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-[#fde8e8] flex items-center justify-center">
-                    <BadgeCheck className="w-5 h-5 text-[#C8181B]" />
-                  </div>
-                  <div>
-                    <p className="font-bold text-[#141414]">Schriftelijke garantie</p>
-                    <p className="text-[#6E6660] text-sm mt-1">
-                      Alle werkzaamheden worden geleverd met garantie.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm">
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-[#fde8e8] flex items-center justify-center">
-                    <CheckCircle2 className="w-5 h-5 text-[#C8181B]" />
-                  </div>
-                  <div>
-                    <p className="font-bold text-[#141414]">Geen verrassingen</p>
-                    <p className="text-[#6E6660] text-sm mt-1">
-                      Duidelijke offerte vooraf, heldere communicatie en afgesproken prijs.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm">
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-[#fde8e8] flex items-center justify-center">
-                    <Clock className="w-5 h-5 text-[#C8181B]" />
-                  </div>
-                  <div>
-                    <p className="font-bold text-[#141414]">Respect voor uw woning</p>
-                    <p className="text-[#6E6660] text-sm mt-1">
-                      Nette werkplek, zorgvuldige toegang en oplevering zoals afgesproken.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+      {/* Text Side (Right) */}
+      <div className="w-full lg:w-1/2 bg-white p-6 md:p-10 lg:p-14 flex flex-col justify-center relative overflow-hidden">
+        <div className="relative z-10">
+          <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 border border-stone-200 bg-stone-50 rounded-full w-max">
+            <div className="w-2 h-2 rounded-full bg-[#C8181B]" />
+            <span className="text-xs font-bold uppercase tracking-widest text-[#141414]">Waarom Van der Starre</span>
           </div>
 
-          <div className="lg:col-span-5">
-            <div className="rounded-3xl border border-stone-200 bg-white shadow-lg overflow-hidden">
-              <div className="aspect-[4/5] relative">
-                <img
-                  src={trustSectionImage.src}
-                  alt="Open trap dichtmaken project van Van der Starre"
-                  className="absolute inset-0 h-full w-full object-cover"
-                />
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-[#2b2b2b] tracking-tight leading-[1.1] mb-6">
+            Gebouwd op <br/>
+            <span className="font-bold">vakmanschap</span> &amp; <span className="font-bold">vertrouwen.</span>
+          </h2>
+
+          <p className="text-stone-500 text-base mb-8 max-w-lg leading-relaxed">
+            Kwalitatief vakwerk, eerlijke prijzen en een vakman die u daadwerkelijk kunt vertrouwen.
+            Wij behandelen uw woning als onze eigen — en staan voor elk project met garantie garant.
+          </p>
+
+          <div className="grid grid-cols-2 gap-6 mb-8 max-w-lg">
+            {[
+              { value: "5+", label: "Jaar Ervaring", icon: Award },
+              { value: "4.9", label: "Beoordeling", icon: Star },
+              { value: "20+", label: "Projecten", icon: Users },
+              { value: "100%", label: "Garantie", icon: CheckCircle2 },
+            ].map((s) => (
+              <div key={s.label} className="flex flex-col">
+                <div className="flex items-center gap-2 mb-1">
+                  <s.icon className="w-5 h-5 text-[#C8181B]" />
+                  <span className="text-2xl font-black text-[#141414] tracking-tight">{s.value}</span>
+                </div>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-stone-500">{s.label}</span>
               </div>
-            </div>
+            ))}
+          </div>
+
+          <div className="space-y-4 pt-6 border-t border-stone-200 max-w-xl">
+            {[
+              {
+                title: "KvK geregistreerd & verzekerd",
+                desc: "Transparant en aanspreekbaar. (KvK: 76281019)",
+                icon: ShieldCheck
+              },
+              {
+                title: "Schriftelijke garantie",
+                desc: "Zekerheid op al onze werkzaamheden.",
+                icon: BadgeCheck
+              },
+              {
+                title: "Geen verrassingen",
+                desc: "Heldere communicatie en afgesproken prijs.",
+                icon: CheckCircle2
+              },
+              {
+                title: "Respect voor uw woning",
+                desc: "Nette werkplek en zorgvuldige oplevering.",
+                icon: Clock
+              }
+            ].map((item, idx) => (
+              <div key={idx} className="flex items-start gap-3">
+                <div className="w-10 h-10 shrink-0 bg-stone-50 rounded-full flex items-center justify-center border border-stone-200">
+                  <item.icon className="w-4 h-4 text-[#C8181B]" />
+                </div>
+                <div className="pt-0.5">
+                  <h4 className="text-xs font-bold uppercase tracking-widest text-[#141414] mb-1">{item.title}</h4>
+                  <p className="text-stone-500 text-sm leading-relaxed">{item.desc}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
